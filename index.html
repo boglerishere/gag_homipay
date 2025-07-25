@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "imask": "https://unpkg.com/imask@7/dist/imask.esm.js"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div id="pre-payment-container" class="payment-container">
+        <h1>Выберите продукт</h1>
+        <div class="product-selection">
+            <div class="product-item" data-product="Продукт 1" data-price="600 ₽">SETMODEL (600 ₽)</div>
+            <div class="product-item" data-product="Продукт 2" data-price="700 ₽">АДМИНКА (700 ₽)</div>
+            <div class="product-item" data-product="Продукт 3" data-price="500 ₽">СБОРКА СЕРВЕРА (1500 ₽)</div>
+           <div class="product-item" data-product="mocha" data-price="10.000 Р"> Подумаем о добавлении механики санья | 10.000 Р</div>
+        </div>
+        <button id="go-to-payment-button" disabled>Перейти к оплате HOMIPAY</button>
+    </div>
+
+    <div class="payment-container hidden" id="payment-form-container">
+        <h1>Оплата продукта</h1>
+        <p id="payment-summary" class="payment-summary"></p>
+        
+        <div class="card-form">
+            <label for="card-number">Номер карты</label>
+            <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" autocomplete="cc-number">
+            
+            <div class="card-details">
+                <div>
+                    <label for="card-expiry">Срок действия</label>
+                    <input type="text" id="card-expiry" placeholder="ММ / ГГ" autocomplete="cc-exp">
+                </div>
+                <div>
+                    <label for="card-cvc">CVC/CVV</label>
+                    <input type="text" id="card-cvc" placeholder="XXX" autocomplete="cc-csc">
+                </div>
+            </div>
+        </div>
+
+        <div class="captcha-container">
+            <div id="robot-check-container">
+                <input type="checkbox" id="robot-checkbox">
+                <label for="robot-checkbox">Я не робот</label>
+            </div>
+            <div id="text-captcha-container" class="hidden">
+                <label for="captcha-input">Капча</label>
+                <canvas id="captcha-canvas" width="200" height="50" title="Попробуйте перезагрузить страницу, если не можете прочитать"></canvas>
+                <input type="text" id="captcha-input" placeholder="Введите текст с картинки" autocomplete="off">
+            </div>
+        </div>
+
+        <button id="pay-button">
+            <span class="button-text">Оплатить</span>
+            <div class="spinner hidden"></div>
+        </button>
+        <p id="error-message" class="error-message"></p>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
